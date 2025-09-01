@@ -9,9 +9,9 @@ class EditPostPage extends StatefulWidget {
 }
 
 class _EditPostPageState extends State<EditPostPage> {
+  
   final TextEditingController _descriptionController = TextEditingController();
 
-  // Function to handle the PUT request to update the post description
   Future<void> _editPost(String postId) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? token = prefs.getString('token');
@@ -74,6 +74,43 @@ class _EditPostPageState extends State<EditPostPage> {
               Text("Share your thoughts with the community", style: TextStyle(fontSize: 16)),
               SizedBox(height: 30),
               Container(
+                      height: 90,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 15),
+                              child: Text(
+                                "Title",
+                                style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w300),
+                              ),
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 15),
+                              child: TextField(
+                                
+                                decoration: const InputDecoration(
+                                  enabledBorder: InputBorder.none,
+                                  focusedBorder: InputBorder.none,
+                                  hintText: "eg. Dive into the project",
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 20,),
+              Container(
                 height: 90,
                 decoration: BoxDecoration(
                   color: const Color.fromARGB(255, 255, 255, 255),
@@ -107,20 +144,22 @@ class _EditPostPageState extends State<EditPostPage> {
                   ),
                 ),
               ),
+              
               Spacer(),
               // Update Post Button
               ElevatedButton(
                 onPressed: () {
                   _editPost(postId); // Pass the postId to the _editPost method
                 },
-                child: Text(
-                  "Save",
-                  style: TextStyle(color: Colors.white, fontSize: 16),
-                ),
+                
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color.fromRGBO(4, 97, 229, 1),
                   minimumSize: Size(double.infinity, 53),
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                ),
+                child: Text(
+                  "Save",
+                  style: TextStyle(color: Colors.white, fontSize: 16),
                 ),
               ),
               SizedBox(height: 20),

@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 
 class CreatePost extends StatefulWidget {
   @override
+  const CreatePost({super.key});
   _CreatePostState createState() => _CreatePostState();
 }
 
